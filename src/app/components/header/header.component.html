@@ -1,0 +1,35 @@
+<header class="font-notoDisplay py-10 px-32">
+  <div class="flex flex-row justify-between items-center">
+    <div class="font-bold text-[32px]">The Vault</div>
+    <nav class="flex items-center bg-orange-400">
+      <div class="centered-container">
+        <ul
+          class="flex flex-row justify-center font-semibold gap-x-14 text-[17px]">
+          <li>Home</li>
+          <li>Blog</li>
+          <li>About</li>
+          <li>Pages</li>
+        </ul>
+      </div>
+    </nav>
+    <div class="flex text-lg gap-x-3">
+      <button class="hover:bg-gray-100 py-2 px-4 rounded-lg">
+        <fa-icon [icon]="faMoon"></fa-icon>
+      </button>
+      <div class="dropdown dropdown-end">
+        <div
+          tabindex="0"
+          role="button"
+          class="hover:bg-gray-100 px-4 py-2 rounded-lg">
+          <fa-icon [icon]="faUser"></fa-icon>
+        </div>
+        <ul
+          tabindex="0"
+          class="dropdown-content z-[1] menu p-2 my-2 shadow bg-base-200 rounded-box w-40 font-atkinson">
+          <li><a>Item 1</a></li>
+          <li><a>Item 2</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
