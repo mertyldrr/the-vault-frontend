@@ -4,146 +4,147 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-importers:
+dependencies:
+  '@angular/animations':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/core@17.0.8)
+  '@angular/common':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/core@17.0.8)(rxjs@7.8.1)
+  '@angular/compiler':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/core@17.0.8)
+  '@angular/core':
+    specifier: ^17.0.8
+    version: 17.0.8(rxjs@7.8.1)(zone.js@0.14.2)
+  '@angular/forms':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)(rxjs@7.8.1)
+  '@angular/platform-browser':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/animations@17.0.8)(@angular/common@17.0.8)(@angular/core@17.0.8)
+  '@angular/platform-browser-dynamic':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/common@17.0.8)(@angular/compiler@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)
+  '@angular/router':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)(rxjs@7.8.1)
+  '@fontsource-variable/noto-sans-display':
+    specifier: ^5.0.19
+    version: 5.0.19
+  '@fontsource-variable/noto-serif':
+    specifier: ^5.0.4
+    version: 5.0.4
+  '@fontsource/atkinson-hyperlegible':
+    specifier: ^5.0.18
+    version: 5.0.18
+  '@fontsource/noto-sans':
+    specifier: ^5.0.18
+    version: 5.0.18
+  '@fortawesome/angular-fontawesome':
+    specifier: ^0.14.1
+    version: 0.14.1(@angular/core@17.0.8)(@fortawesome/fontawesome-svg-core@6.5.1)
+  '@fortawesome/fontawesome-svg-core':
+    specifier: ^6.5.1
+    version: 6.5.1
+  '@fortawesome/free-solid-svg-icons':
+    specifier: ^6.5.1
+    version: 6.5.1
+  normalize.css:
+    specifier: ^8.0.1
+    version: 8.0.1
+  rxjs:
+    specifier: ~7.8.0
+    version: 7.8.1
+  tslib:
+    specifier: ^2.3.0
+    version: 2.6.2
+  zone.js:
+    specifier: ~0.14.2
+    version: 0.14.2
 
-  .:
-    dependencies:
-      '@angular/animations':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/core@17.0.8)
-      '@angular/common':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/core@17.0.8)(rxjs@7.8.1)
-      '@angular/compiler':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/core@17.0.8)
-      '@angular/core':
-        specifier: ^17.0.8
-        version: 17.0.8(rxjs@7.8.1)(zone.js@0.14.2)
-      '@angular/forms':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)(rxjs@7.8.1)
-      '@angular/platform-browser':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/animations@17.0.8)(@angular/common@17.0.8)(@angular/core@17.0.8)
-      '@angular/platform-browser-dynamic':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/common@17.0.8)(@angular/compiler@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)
-      '@angular/router':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)(rxjs@7.8.1)
-      '@fontsource-variable/noto-sans-display':
-        specifier: ^5.0.19
-        version: 5.0.19
-      '@fontsource-variable/noto-serif':
-        specifier: ^5.0.4
-        version: 5.0.4
-      '@fontsource/atkinson-hyperlegible':
-        specifier: ^5.0.18
-        version: 5.0.18
-      '@fontsource/noto-sans':
-        specifier: ^5.0.18
-        version: 5.0.18
-      '@fortawesome/angular-fontawesome':
-        specifier: ^0.14.1
-        version: 0.14.1(@angular/core@17.0.8)(@fortawesome/fontawesome-svg-core@6.5.1)
-      '@fortawesome/fontawesome-svg-core':
-        specifier: ^6.5.1
-        version: 6.5.1
-      '@fortawesome/free-solid-svg-icons':
-        specifier: ^6.5.1
-        version: 6.5.1
-      rxjs:
-        specifier: ~7.8.0
-        version: 7.8.1
-      tslib:
-        specifier: ^2.3.0
-        version: 2.6.2
-      zone.js:
-        specifier: ~0.14.2
-        version: 0.14.2
-    devDependencies:
-      '@angular-devkit/build-angular':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/compiler-cli@17.0.8)(karma@6.4.2)(tailwindcss@3.4.0)(typescript@5.2.2)
-      '@angular-eslint/builder':
-        specifier: 17.1.1
-        version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
-      '@angular-eslint/eslint-plugin':
-        specifier: 17.1.1
-        version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
-      '@angular-eslint/eslint-plugin-template':
-        specifier: 17.1.1
-        version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
-      '@angular-eslint/schematics':
-        specifier: 17.1.1
-        version: 17.1.1(@angular/cli@17.0.8)(eslint@8.56.0)(typescript@5.2.2)
-      '@angular-eslint/template-parser':
-        specifier: 17.1.1
-        version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
-      '@angular/cli':
-        specifier: ~17.0.8
-        version: 17.0.8
-      '@angular/compiler-cli':
-        specifier: ^17.0.8
-        version: 17.0.8(@angular/compiler@17.0.8)(typescript@5.2.2)
-      '@types/jasmine':
-        specifier: ~4.3.0
-        version: 4.3.5
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.10.0
-        version: 6.15.0(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(typescript@5.2.2)
-      '@typescript-eslint/parser':
-        specifier: ^6.10.0
-        version: 6.15.0(eslint@8.56.0)(typescript@5.2.2)
-      autoprefixer:
-        specifier: ^10.4.16
-        version: 10.4.16(postcss@8.4.32)
-      daisyui:
-        specifier: ^4.4.24
-        version: 4.4.24(postcss@8.4.32)
-      eslint:
-        specifier: ^8.53.0
-        version: 8.56.0
-      eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.0.0(eslint@8.56.0)
-      eslint-plugin-prettier:
-        specifier: ^5.0.0
-        version: 5.0.0(eslint-config-prettier@9.0.0)(eslint@8.56.0)(prettier@3.0.3)
-      jasmine-core:
-        specifier: ~4.6.0
-        version: 4.6.0
-      karma:
-        specifier: ~6.4.0
-        version: 6.4.2
-      karma-chrome-launcher:
-        specifier: ~3.2.0
-        version: 3.2.0
-      karma-coverage:
-        specifier: ~2.2.0
-        version: 2.2.1
-      karma-jasmine:
-        specifier: ~5.1.0
-        version: 5.1.0(karma@6.4.2)
-      karma-jasmine-html-reporter:
-        specifier: ~2.1.0
-        version: 2.1.0(jasmine-core@4.6.0)(karma-jasmine@5.1.0)(karma@6.4.2)
-      postcss:
-        specifier: ^8.4.32
-        version: 8.4.32
-      prettier:
-        specifier: ^3.0.3
-        version: 3.0.3
-      prettier-eslint:
-        specifier: ^15.0.1
-        version: 15.0.1
-      tailwindcss:
-        specifier: ^3.4.0
-        version: 3.4.0
-      typescript:
-        specifier: ~5.2.2
-        version: 5.2.2
+devDependencies:
+  '@angular-devkit/build-angular':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/compiler-cli@17.0.8)(karma@6.4.2)(tailwindcss@3.4.0)(typescript@5.2.2)
+  '@angular-eslint/builder':
+    specifier: 17.1.1
+    version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
+  '@angular-eslint/eslint-plugin':
+    specifier: 17.1.1
+    version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
+  '@angular-eslint/eslint-plugin-template':
+    specifier: 17.1.1
+    version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
+  '@angular-eslint/schematics':
+    specifier: 17.1.1
+    version: 17.1.1(@angular/cli@17.0.8)(eslint@8.56.0)(typescript@5.2.2)
+  '@angular-eslint/template-parser':
+    specifier: 17.1.1
+    version: 17.1.1(eslint@8.56.0)(typescript@5.2.2)
+  '@angular/cli':
+    specifier: ~17.0.8
+    version: 17.0.8
+  '@angular/compiler-cli':
+    specifier: ^17.0.8
+    version: 17.0.8(@angular/compiler@17.0.8)(typescript@5.2.2)
+  '@types/jasmine':
+    specifier: ~4.3.0
+    version: 4.3.5
+  '@typescript-eslint/eslint-plugin':
+    specifier: ^6.10.0
+    version: 6.15.0(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(typescript@5.2.2)
+  '@typescript-eslint/parser':
+    specifier: ^6.10.0
+    version: 6.15.0(eslint@8.56.0)(typescript@5.2.2)
+  autoprefixer:
+    specifier: ^10.4.16
+    version: 10.4.16(postcss@8.4.32)
+  daisyui:
+    specifier: ^4.4.24
+    version: 4.4.24(postcss@8.4.32)
+  eslint:
+    specifier: ^8.53.0
+    version: 8.56.0
+  eslint-config-prettier:
+    specifier: ^9.0.0
+    version: 9.0.0(eslint@8.56.0)
+  eslint-plugin-prettier:
+    specifier: ^5.0.0
+    version: 5.0.0(eslint-config-prettier@9.0.0)(eslint@8.56.0)(prettier@3.0.3)
+  jasmine-core:
+    specifier: ~4.6.0
+    version: 4.6.0
+  karma:
+    specifier: ~6.4.0
+    version: 6.4.2
+  karma-chrome-launcher:
+    specifier: ~3.2.0
+    version: 3.2.0
+  karma-coverage:
+    specifier: ~2.2.0
+    version: 2.2.1
+  karma-jasmine:
+    specifier: ~5.1.0
+    version: 5.1.0(karma@6.4.2)
+  karma-jasmine-html-reporter:
+    specifier: ~2.1.0
+    version: 2.1.0(jasmine-core@4.6.0)(karma-jasmine@5.1.0)(karma@6.4.2)
+  postcss:
+    specifier: ^8.4.32
+    version: 8.4.32
+  prettier:
+    specifier: ^3.0.3
+    version: 3.0.3
+  prettier-eslint:
+    specifier: ^15.0.1
+    version: 15.0.1
+  tailwindcss:
+    specifier: ^3.4.0
+    version: 3.4.0
+  typescript:
+    specifier: ~5.2.2
+    version: 5.2.2
 
 packages:
 
@@ -6808,6 +6809,10 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /normalize.css@8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+    dev: false
 
   /npm-bundled@3.0.0:
     resolution: {integrity: sha512-Vq0eyEQy+elFpzsKjMss9kxqb9tG3YHg4dsyWuUENuzvSUWe1TCnW/vV9FkhvBk/brEDoDiVd+M1Btosa6ImdQ==}
