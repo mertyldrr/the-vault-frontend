@@ -1,0 +1,30 @@
+.form-input {
+  color: #1f2937; /* text-gray-900 */
+  padding: 0.5rem 0.5rem; /* px-2 */
+  box-shadow: 0 0 0 1px rgb(209 213 219); /* ring-1 ring-inset ring-gray-300 */
+  border-radius: 0.25rem; /* ring-1 */
+  width: 100%;
+  font-size: 13px;
+  background-color: white;
+}
+
+/* Hover state */
+.form-input:hover {
+  background-color: rgb(249 250 251); /* bg-gray-50 */
+}
+
+.form-input:focus {
+  outline-color: rgb(209 213 219);
+}
+
+.form-label {
+  font-family: 'Noto Sans Display Variable', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  padding-bottom: 6px;
+}
+
+/* Hide password reveal button in MS Edge */
+::-ms-reveal {
+  display: none;
+}

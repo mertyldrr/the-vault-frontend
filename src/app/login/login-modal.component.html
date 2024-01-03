@@ -1,0 +1,106 @@
+<div
+  class="relative z-10"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true">
+  <!--
+    Background backdrop, show/hide based on modal state.
+
+    Entering: "ease-out duration-300"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "ease-in duration-200"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+    <div class="flex min-h-full justify-center p-4 items-center">
+      <!--
+        Modal panel, show/hide based on modal state.
+
+        Entering: "ease-out duration-300"
+          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          To: "opacity-100 translate-y-0 sm:scale-100"
+        Leaving: "ease-in duration-200"
+          From: "opacity-100 translate-y-0 sm:scale-100"
+          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      -->
+      <div
+        class="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all w-2/5">
+        <div class="w-full py-8 px-6">
+          <div class="flex items-start">
+            <div class="w-full flex flex-col gap-y-3 p-2 relative">
+              <button class="absolute right-2 top-0" (click)="closeModal()">
+                <fa-icon class="fa-lg" [icon]="faXmark"></fa-icon>
+              </button>
+
+              <div class="flex flex-col gap-y-4">
+                <h3
+                  class="font-notoDisplay font-semibold text-[32px] leading-6 text-gray-900">
+                  Welcome back!
+                </h3>
+                <p class="font-notoDisplay text-sm text-gray-500">
+                  Login to start growing your vault.
+                </p>
+              </div>
+
+              <form class="flex flex-col gap-y-3">
+                <div class="flex flex-col">
+                  <label class="form-label" for="email">Email</label>
+                  <input
+                    id="email"
+                    class="form-input"
+                    type="text"
+                    [formControl]="email" />
+                </div>
+                <div class="relative flex flex-col">
+                  <label class="form-label" for="password">Password</label>
+                  <div class="relative">
+                    <input
+                      class="form-input block relative"
+                      id="password"
+                      [type]="passwordVisible ? 'text' : 'password'"
+                      [formControl]="password" />
+                    <label class="absolute" for="password"> </label>
+                    <fa-icon
+                      class="absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
+                      (click)="togglePasswordVisibility()"
+                      [icon]="passwordVisible ? faEyeSlash : faEye"></fa-icon>
+                  </div>
+                </div>
+
+                <div
+                  class="flex flex-row justify-between items-center font-atkinson">
+                  <div class="form-control">
+                    <label class="label cursor-pointer space-x-2 items-center">
+                      <input
+                        type="checkbox"
+                        checked="checked"
+                        class="checkbox w-4 h-4" />
+                      <span class="text-sm text-gray-900">Remember me</span>
+                    </label>
+                  </div>
+                  <a class="text-sm">Forgot password?</a>
+                </div>
+                <div class="flex flex-col pt-2 gap-y-4">
+                  <button
+                    type="button"
+                    class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-3 text-white shadow-sm font-atkinson">
+                    Log in
+                  </button>
+                  <div
+                    class="flex justify-center items-center gap-x-1 font-atkinson">
+                    <span>Don't have an account?</span>
+                    <a>Sign up</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
