@@ -13,9 +13,18 @@
       </div>
     </nav>
     <div class="flex text-lg gap-x-3">
-      <button class="hover:bg-gray-100 py-2 px-4 rounded-lg">
-        <fa-icon [icon]="faMoon"></fa-icon>
-      </button>
+      <label class="swap swap-rotate">
+        <!-- this hidden checkbox controls the state -->
+        <input type="checkbox" (change)="toggleTheme()" />
+        <fa-icon
+          data-set-theme="light"
+          class="swap-on"
+          [icon]="faSun"></fa-icon>
+        <fa-icon
+          data-toggle-theme="dark"
+          class="swap-off"
+          [icon]="faMoon"></fa-icon>
+      </label>
       <div class="dropdown dropdown-end">
         <div
           tabindex="0"
@@ -26,8 +35,8 @@
         <ul
           tabindex="0"
           class="dropdown-content z-[1] menu p-2 my-2 shadow bg-base-200 rounded-box w-40 font-atkinson">
-          <li><a>Item 1</a></li>
-          <li><a>Item 2</a></li>
+          <li><a (click)="showLoginModal()">Login</a></li>
+          <li><a (click)="showSignupModal()">Sign Up</a></li>
         </ul>
       </div>
     </div>
