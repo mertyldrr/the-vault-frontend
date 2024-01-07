@@ -1,5 +1,3 @@
-// theme.service.ts
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Theme } from '../types';
@@ -15,5 +13,9 @@ export class ThemeService {
     const currentTheme = this.themeSubject.getValue();
     const newTheme = currentTheme === Theme.Light ? Theme.Dark : Theme.Light;
     this.themeSubject.next(newTheme);
+  }
+
+  getCurrentTheme(): Theme {
+    return this.themeSubject.getValue();
   }
 }
