@@ -1,31 +1,117 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { faEye, faEyeSlash, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Component } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+
+import {
+  faCheck,
+  faEye,
+  faEyeSlash,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { NgClass } from '@angular/common';
+import { ValidationFeedbackComponent } from '../components/error-validation/validation-feedback.component';
+import {
+  lowercaseCharValidator,
+  minLengthValidator,
+  passwordMatchValidator,
+  uppercaseCharValidator,
+} from '../utils/validators/signup.validator';
+import { CreateUserDto, Gender } from '../models/user.interface';
+import { ModalService } from '../services/modal/modal.service';
+import { AuthService } from '../services/auth/auth.service';
+import { LoadingSpinnerComponent } from '../components/loading-spinner/loading-spinner.component';
+import { storeToken } from '../utils/local-storage/utils';
+import { Token } from '../types';
 
 @Component({
   selector: 'app-signup-modal',
   standalone: true,
-  imports: [ReactiveFormsModule, FaIconComponent],
+  imports: [
+    ReactiveFormsModule,
+    FaIconComponent,
+    NgClass,
+    ValidationFeedbackComponent,
+    LoadingSpinnerComponent,
+  ],
   templateUrl: './signup-modal.component.html',
   styleUrl: './signup-modal.component.css',
 })
 export class SignupModalComponent {
-  isModalVisible = false;
-  firstName = new FormControl('');
-  lastName = new FormControl('');
-  email = new FormControl('');
-  password = new FormControl('');
-  passwordConfirm = new FormControl('');
-  @Output() closeSignUpModal = new EventEmitter<boolean>();
-  passwordVisible = false;
+  public isLoading = false;
+  public passwordVisible = false;
 
-  protected readonly faXmark = faXmark;
-  protected readonly faEyeSlash = faEyeSlash;
-  protected readonly faEye = faEye;
+  public signupForm = new FormGroup(
+    {
+      firstName: new FormControl<string | null>(null),
+      lastName: new FormControl<string | null>(null),
+      userName: new FormControl<string | null>(null),
+      email: new FormControl<string>('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      password: new FormControl<string>('', [
+        Validators.required,
+        minLengthValidator(8),
+        lowercaseCharValidator(),
+        uppercaseCharValidator(),
+      ]),
+      passwordConfirm: new FormControl<string>('', [Validators.required]),
+      birthDate: new FormControl<Date | null>(null),
+      gender: new FormControl<Gender>(Gender.U),
+    },
+    { validators: passwordMatchValidator() }
+  );
+
+  public readonly faXmark = faXmark;
+  public readonly faEyeSlash = faEyeSlash;
+  public readonly faEye = faEye;
+  public readonly faCheck = faCheck;
+
+  constructor(
+    private modalService: ModalService,
+    private authService: AuthService
+  ) {}
+  get password() {
+    return this.signupForm.get('password');
+  }
+
+  onSubmit() {
+    this.isLoading = true;
+    if (this.signupForm.valid) {
+      const newUser: CreateUserDto = {
+        firstName: this.signupForm.get('firstName')?.value ?? null,
+        lastName: this.signupForm.get('lastName')?.value ?? null,
+        username: this.signupForm.get('username')?.value ?? null,
+        email: this.signupForm.get('email')?.value!,
+        password: this.signupForm.get('password')?.value!,
+        birthDate: this.signupForm.get('birthDate')?.value ?? null,
+        gender: this.signupForm.get('gender')?.value ?? null,
+      };
+      this.authService.signUp(newUser).subscribe({
+        next: user => {
+          this.isLoading = false;
+          storeToken(Token.Access, user.accessToken!);
+          storeToken(Token.Refresh, user.refreshToken!);
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
+    } else {
+      // Handle the case when the form is not valid (contains errors)
+    }
+  }
 
   closeModal(): void {
-    this.closeSignUpModal.emit(false);
+    this.modalService.closeSignUpModal();
   }
 
   togglePasswordVisibility() {
