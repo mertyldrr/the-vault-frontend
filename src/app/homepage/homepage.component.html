@@ -6,5 +6,9 @@
   <app-blog-post></app-blog-post>
   <app-blog-post></app-blog-post>
 </div>
-
+@if (modalService.showLoginModal$ | async) {
+  <app-login-modal></app-login-modal>
+} @else if (modalService.showSignUpModal$ | async) {
+  <app-signup-modal></app-signup-modal>
+}
 <app-footer></app-footer>
