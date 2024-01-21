@@ -21,12 +21,13 @@ import {
   passwordMatchValidator,
   uppercaseCharValidator,
 } from '../utils/validators/signup.validator';
-import { CreateUserDto, Gender } from '../models/user.interface';
+import { CreateUserDto } from '../models/auth.interface';
 import { ModalService } from '../services/modal/modal.service';
 import { AuthService } from '../services/auth/auth.service';
 import { LoadingSpinnerComponent } from '../components/loading-spinner/loading-spinner.component';
 import { storeToken } from '../utils/local-storage/utils';
 import { Token } from '../types';
+import { Gender } from '../models/user.interface';
 
 @Component({
   selector: 'app-signup-modal',
