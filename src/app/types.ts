@@ -4,3 +4,8 @@ export enum Theme {
   Light = 'light',
   Dark = 'dark',
 }
+
+export enum Token {
+  Access = 'access-token',
+  Refresh = 'refresh-token',
+}

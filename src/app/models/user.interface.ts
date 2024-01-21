@@ -1,15 +1,16 @@
 export interface User {
   id: number;
-  firstName?: string;
-  lastName?: string;
-  username?: string;
+  firstName: string | null;
+  lastName: string | null;
+  username: string | null;
   email: string;
   password: string;
-  birthDate?: Date;
-  gender?: Gender;
+  birthDate: Date | null;
+  gender: Gender | null;
+  refreshToken: string | null;
 }
 
-enum Gender {
+export enum Gender {
   M = 'male',
   F = 'female',
   U = 'unspecified',
