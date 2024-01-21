@@ -1,0 +1,10 @@
+<div class="flex flex-row items-center gap-x-1">
+  @if(icon) {
+  <div class="flex items-center justify-center w-4">
+    <fa-icon [ngClass]="textColor + ' ' + textSize" [icon]="icon"></fa-icon>
+  </div>
+  }
+  <span [class]="'font-notoDisplay' + ' ' + textSize + ' ' + textColor">{{
+    text
+  }}</span>
+</div>
