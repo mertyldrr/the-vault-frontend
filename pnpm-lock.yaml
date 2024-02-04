@@ -50,6 +50,9 @@ dependencies:
   '@fortawesome/free-solid-svg-icons':
     specifier: ^6.5.1
     version: 6.5.1
+  modern-normalize:
+    specifier: ^2.0.0
+    version: 2.0.0
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
@@ -6226,6 +6229,11 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: true
+
+  /modern-normalize@2.0.0:
+    resolution: {integrity: sha512-CxBoEVKh5U4DH3XuNbc5ONLF6dQBc8dSc7pdZ1957FGbIO5JBqGqqchhET9dTexri8/pk9xBL6+5ceOtCIp1QA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /mrmime@2.0.0:
     resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==}

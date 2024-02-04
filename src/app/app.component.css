@@ -2,3 +2,4 @@
 @import '@fontsource-variable/noto-serif';
 @import '@fontsource/atkinson-hyperlegible/400.css';
 @import '@fontsource/atkinson-hyperlegible/700.css';
+@import 'node_modules/modern-normalize/modern-normalize.css';
