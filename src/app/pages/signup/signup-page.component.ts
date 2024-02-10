@@ -14,23 +14,22 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgClass } from '@angular/common';
-import { ValidationFeedbackComponent } from '../components/error-validation/validation-feedback.component';
+import { ValidationFeedbackComponent } from '../../components/error-validation/validation-feedback.component';
 import {
   lowercaseCharValidator,
   minLengthValidator,
   passwordMatchValidator,
   uppercaseCharValidator,
-} from '../utils/validators/signup.validator';
-import { CreateUserDto } from '../models/auth.interface';
-import { ModalService } from '../services/modal/modal.service';
-import { AuthService } from '../services/auth/auth.service';
-import { LoadingSpinnerComponent } from '../components/loading-spinner/loading-spinner.component';
-import { storeToken } from '../utils/local-storage/utils';
-import { Token } from '../types';
-import { Gender } from '../models/user.interface';
+} from '../../utils/validators/signup.validator';
+import { CreateUserDto } from '../../models/auth.interface';
+import { AuthService } from '../../services/auth/auth.service';
+import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
+import { storeToken } from '../../utils/local-storage/utils';
+import { Token } from '../../types';
+import { Gender } from '../../models/user.interface';
 
 @Component({
-  selector: 'app-signup-modal',
+  selector: 'app-signup',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -39,10 +38,10 @@ import { Gender } from '../models/user.interface';
     ValidationFeedbackComponent,
     LoadingSpinnerComponent,
   ],
-  templateUrl: './signup-modal.component.html',
-  styleUrl: './signup-modal.component.css',
+  templateUrl: './signup-page.component.html',
+  styleUrl: './signup-page.component.css',
 })
-export class SignupModalComponent {
+export class SignupPage {
   public isLoading = false;
   public passwordVisible = false;
 
@@ -73,10 +72,7 @@ export class SignupModalComponent {
   public readonly faEye = faEye;
   public readonly faCheck = faCheck;
 
-  constructor(
-    private modalService: ModalService,
-    private authService: AuthService
-  ) {}
+  constructor(private authService: AuthService) {}
   get password() {
     return this.signupForm.get('password');
   }
@@ -109,10 +105,6 @@ export class SignupModalComponent {
     } else {
       // Handle the case when the form is not valid (contains errors)
     }
-  }
-
-  closeModal(): void {
-    this.modalService.closeSignUpModal();
   }
 
   togglePasswordVisibility() {

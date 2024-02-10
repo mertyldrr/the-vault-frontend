@@ -12,27 +12,31 @@ import {
   faEyeSlash,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import { ValidationFeedbackComponent } from '../components/error-validation/validation-feedback.component';
-import { ModalService } from '../services/modal/modal.service';
-import { AuthService } from '../services/auth/auth.service';
-import { AuthRequestDto } from '../models/auth.interface';
-import { LoadingSpinnerComponent } from '../components/loading-spinner/loading-spinner.component';
-import { storeToken } from '../utils/local-storage/utils';
-import { Token } from '../types';
+import { ValidationFeedbackComponent } from '../../components/error-validation/validation-feedback.component';
+import { AuthService } from '../../services/auth/auth.service';
+import { AuthRequestDto } from '../../models/auth.interface';
+import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
+import { storeToken } from '../../utils/local-storage/utils';
+import { Token } from '../../types';
+import { Router } from '@angular/router';
+import { FeaturedBlogPostComponent } from '../../featured-blog-post/featured-blog-post.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @Component({
-  selector: 'app-login-modal',
+  selector: 'app-login',
   standalone: true,
   imports: [
     ReactiveFormsModule,
     FontAwesomeModule,
     ValidationFeedbackComponent,
     LoadingSpinnerComponent,
+    FeaturedBlogPostComponent,
+    HeaderComponent,
   ],
-  templateUrl: './login-modal.component.html',
-  styleUrl: './login-modal.component.css',
+  templateUrl: './login-page.component.html',
+  styleUrl: './login-page.component.css',
 })
-export class LoginModalComponent {
+export class LoginPage {
   public loginForm = new FormGroup({
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required]),
@@ -46,7 +50,7 @@ export class LoginModalComponent {
   public readonly faCheck = faCheck;
 
   constructor(
-    private modalService: ModalService,
+    private router: Router,
     private authService: AuthService
   ) {}
 
@@ -55,12 +59,8 @@ export class LoginModalComponent {
   }
 
   showSignupModal(): void {
-    this.closeModal();
-    this.modalService.showSignUpModal();
-  }
-
-  closeModal() {
-    this.modalService.closeLoginModal();
+    // this.closeModal();
+    this.router.navigate(['/signup']);
   }
 
   onLogin() {
