@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { faMoon, faSun, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThemeService } from '../../theme/theme.service';
-import { ModalService } from '../../services/modal/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,16 +17,16 @@ export class HeaderComponent {
   public readonly faSun = faSun;
 
   constructor(
-    private modalService: ModalService,
+    private router: Router,
     protected themeService: ThemeService
   ) {}
 
-  showSignupModal(): void {
-    this.modalService.showSignUpModal();
+  navigateToSignUp(): void {
+    this.router.navigate(['signup']);
   }
 
-  showLoginModal(): void {
-    this.modalService.showLoginModal();
+  navigateToLogin(): void {
+    this.router.navigate(['login']);
   }
 
   toggleTheme() {

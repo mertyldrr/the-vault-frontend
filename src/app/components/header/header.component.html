@@ -1,10 +1,10 @@
 <header class="font-notoDisplay py-10 px-32">
   <div class="flex flex-row justify-between items-center">
     <div class="font-bold text-[32px]">The Vault</div>
-    <nav class="flex items-center bg-orange-400">
+    <nav class="flex items-center">
       <div class="centered-container">
         <ul
-          class="flex flex-row justify-center font-semibold gap-x-14 text-[17px]">
+          class="flex flex-row justify-center font-semibold gap-x-20 text-[17px]">
           <li>Home</li>
           <li>Blog</li>
           <li>About</li>
@@ -35,8 +35,8 @@
         <ul
           tabindex="0"
           class="dropdown-content z-[1] menu p-2 my-2 shadow bg-base-200 rounded-box w-40 font-atkinson">
-          <li><a (click)="showLoginModal()">Login</a></li>
-          <li><a (click)="showSignupModal()">Sign Up</a></li>
+          <li><a (click)="navigateToLogin()">Login</a></li>
+          <li><a (click)="navigateToSignUp()">Sign Up</a></li>
         </ul>
       </div>
     </div>

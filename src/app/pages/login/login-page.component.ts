@@ -58,8 +58,7 @@ export class LoginPage {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  showSignupModal(): void {
-    // this.closeModal();
+  navigateToSignUp(): void {
     this.router.navigate(['/signup']);
   }
 
