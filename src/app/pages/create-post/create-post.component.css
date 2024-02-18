@@ -1,0 +1,8 @@
+:host ::ng-deep .ql-toolbar {
+  background-color: var(--platinum);
+}
+
+:host ::ng-deep .ql-container {
+  height: 500px;
+  background-color: var(--seasalt);
+}

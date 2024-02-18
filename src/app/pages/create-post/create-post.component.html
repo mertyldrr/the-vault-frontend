@@ -1,0 +1,17 @@
+<div class="h-[calc(100vh-8rem)] flex flex-col bg-white">
+  <div class="flex flex-col gap-y-6 mt-20 px-32">
+    <quill-editor
+      (onContentChanged)="onContentChanged($event)"
+      class="quill-editor w-full"></quill-editor>
+    <div class="flex flex-row justify-end gap-x-6">
+      <button
+        class="font-notoDisplay bg-transparent hover:bg-outer-space text-onyx font-semibold hover:text-seasalt py-3 px-6 border border-outer-space hover:border-transparent rounded">
+        Save as draft
+      </button>
+      <button
+        class="font-notoDisplay bg-outer-space hover:bg-onyx text-seasalt font-bold py-3 px-6 rounded">
+        Publish
+      </button>
+    </div>
+  </div>
+</div>
