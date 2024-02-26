@@ -8,7 +8,7 @@ import {
   CreateUserDto,
   RefreshTokenResponse,
 } from '../../models/auth.interface';
-import { removeToken } from '../../utils/local-storage/utils';
+import { getStoredToken, removeToken } from '../../utils/local-storage/utils';
 import { Token } from '../../types';
 
 @Injectable({
@@ -17,6 +17,12 @@ import { Token } from '../../types';
 export class AuthService {
   private apiUrl = environment.apiUrl + '/auth';
   constructor(private http: HttpClient) {}
+
+  isAuthenticated(): boolean {
+    // Check if access token exists
+    const accessToken = getStoredToken(Token.Access);
+    return !!accessToken;
+  }
 
   signUp(user: CreateUserDto): Observable<AuthenticatedUser> {
     return this.http.post<AuthenticatedUser>(`${this.apiUrl}/signup`, user);
