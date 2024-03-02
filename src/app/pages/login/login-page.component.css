@@ -28,3 +28,11 @@
 ::-ms-reveal {
   display: none;
 }
+
+::ng-deep .custom-snackbar {
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: white;
+  background-color: #16a34a;
+}

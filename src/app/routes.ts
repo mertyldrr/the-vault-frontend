@@ -3,6 +3,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoginPage } from './pages/login/login-page.component';
 import { SignupPage } from './pages/signup/signup-page.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Route[] = [
   {
@@ -20,6 +21,7 @@ export const routes: Route[] = [
   {
     path: 'create-post',
     component: CreatePostComponent,
+    canActivate: [authGuard],
   },
   {
     path: '**',

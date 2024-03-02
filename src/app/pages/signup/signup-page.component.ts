@@ -27,6 +27,7 @@ import { LoadingSpinnerComponent } from '../../components/loading-spinner/loadin
 import { storeToken } from '../../utils/local-storage/utils';
 import { Token } from '../../types';
 import { Gender } from '../../models/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -72,7 +73,10 @@ export class SignupPage {
   public readonly faEye = faEye;
   public readonly faCheck = faCheck;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
   get password() {
     return this.signupForm.get('password');
   }
@@ -99,7 +103,10 @@ export class SignupPage {
           this.isLoading = false;
         },
         complete: () => {
-          this.isLoading = false;
+          setTimeout(async () => {
+            await this.router.navigate(['/']);
+            this.isLoading = false;
+          }, 2000);
         },
       });
     } else {

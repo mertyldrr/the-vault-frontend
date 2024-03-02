@@ -3,11 +3,13 @@ import { faMoon, faSun, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThemeService } from '../../theme/theme.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
@@ -18,15 +20,25 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
+    private authService: AuthService,
     protected themeService: ThemeService
   ) {}
 
-  navigateToSignUp(): void {
-    this.router.navigate(['signup']);
+  isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
   }
 
-  navigateToLogin(): void {
-    this.router.navigate(['login']);
+  async navigateToSignUp() {
+    await this.router.navigate(['signup']);
+  }
+
+  async navigateToLogin() {
+    await this.router.navigate(['login']);
+  }
+
+  async logout() {
+    this.authService.logout();
+    await this.router.navigate(['/']);
   }
 
   toggleTheme() {
