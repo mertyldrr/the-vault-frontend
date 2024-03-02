@@ -8,7 +8,6 @@ export class SnackbarService {
   constructor(private snackBar: MatSnackBar) {}
 
   openSnackBar(message: string, action: string, config?: MatSnackBarConfig) {
-    console.log('test');
     this.snackBar.open(message, action, config);
   }
 
