@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { NgIf } from '@angular/common';
 
@@ -9,4 +9,7 @@ import { NgIf } from '@angular/common';
   templateUrl: './loading-overlay.component.html',
   styleUrl: './loading-overlay.component.css',
 })
-export class LoadingOverlayComponent {}
+export class LoadingOverlayComponent {
+  @Input() public twColor: string | undefined = undefined;
+  constructor() {}
+}
