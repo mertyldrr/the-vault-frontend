@@ -65,9 +65,6 @@ dependencies:
   ngx-quill:
     specifier: ^25.0.0
     version: 25.0.0(@angular/core@17.1.0)(quill@2.0.0-rc.0)(rxjs@7.8.1)
-  normalize.css:
-    specifier: ^8.0.1
-    version: 8.0.1
   quill:
     specifier: 2.0.0-rc.0
     version: 2.0.0-rc.0
@@ -7176,10 +7173,6 @@ packages:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
     engines: {node: '>=0.10.0'}
     dev: true
-
-  /normalize.css@8.0.1:
-    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
-    dev: false
 
   /npm-bundled@3.0.0:
     resolution: {integrity: sha512-Vq0eyEQy+elFpzsKjMss9kxqb9tG3YHg4dsyWuUENuzvSUWe1TCnW/vV9FkhvBk/brEDoDiVd+M1Btosa6ImdQ==}
