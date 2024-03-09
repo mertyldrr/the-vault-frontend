@@ -5,10 +5,13 @@ import { ThemeService } from './theme/theme.service';
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { AuthInterceptor } from './utils/http-interceptors/auth-interceptor';
 import { provideQuillConfig } from 'ngx-quill/config';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    provideHttpClient(),
+    provideAnimations(),
     provideQuillConfig({
       placeholder: 'Start writing your blog post here',
       modules: {
@@ -32,7 +35,6 @@ export const appConfig: ApplicationConfig = {
         ],
       },
     }),
-    provideHttpClient(),
     ThemeService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
