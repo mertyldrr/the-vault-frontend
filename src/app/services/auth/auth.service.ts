@@ -6,7 +6,7 @@ import {
   AuthenticatedUser,
   AuthRequestDto,
   CreateUserDto,
-  RefreshTokenResponse,
+  RefreshTokenResponseDto,
 } from '../../models/auth.interface';
 import { getStoredToken, removeToken } from '../../utils/local-storage/utils';
 import { Token } from '../../types';
@@ -35,11 +35,11 @@ export class AuthService {
     );
   }
 
-  refreshToken(oldRefreshToken: string): Observable<RefreshTokenResponse> {
+  refreshToken(oldRefreshToken: string): Observable<RefreshTokenResponseDto> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${oldRefreshToken}`,
     });
-    return this.http.get<RefreshTokenResponse>(`${this.apiUrl}/refresh`, {
+    return this.http.get<RefreshTokenResponseDto>(`${this.apiUrl}/refresh`, {
       headers,
     });
   }

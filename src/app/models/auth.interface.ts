@@ -6,7 +6,7 @@ export interface AuthenticatedUser extends User {
   accessToken: string | null;
 }
 
-export type RefreshTokenResponse = {
+export type RefreshTokenResponseDto = {
   accessToken: string;
   refreshToken: string;
 };
