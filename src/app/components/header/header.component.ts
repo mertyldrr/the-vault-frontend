@@ -38,7 +38,6 @@ export class HeaderComponent {
 
   async logout() {
     this.authService.logout();
-    await this.router.navigate(['/']);
   }
 
   toggleTheme() {
