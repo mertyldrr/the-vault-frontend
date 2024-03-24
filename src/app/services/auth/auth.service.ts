@@ -10,13 +10,17 @@ import {
 } from '../../models/auth.interface';
 import { getStoredToken, removeToken } from '../../utils/local-storage/utils';
 import { Token } from '../../types';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = environment.apiUrl + '/auth';
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   isAuthenticated(): boolean {
     // Check if access token exists
@@ -35,9 +39,10 @@ export class AuthService {
     );
   }
 
-  refreshToken(oldRefreshToken: string): Observable<RefreshTokenResponseDto> {
+  refreshToken(): Observable<RefreshTokenResponseDto> {
+    const storedRefreshToken = getStoredToken(Token.Refresh);
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${oldRefreshToken}`,
+      Authorization: `Bearer ${storedRefreshToken}`,
     });
     return this.http.get<RefreshTokenResponseDto>(`${this.apiUrl}/refresh`, {
       headers,
@@ -47,5 +52,6 @@ export class AuthService {
   logout(): void {
     removeToken(Token.Access);
     removeToken(Token.Refresh);
+    this.router.navigate(['/']);
   }
 }
