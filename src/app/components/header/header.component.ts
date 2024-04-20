@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { faMoon, faSun, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ThemeService } from '../../theme/theme.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FontAwesomeModule, NgIf],
+  imports: [FontAwesomeModule, NgIf, RouterLink, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

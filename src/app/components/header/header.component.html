@@ -5,33 +5,14 @@
       <div class="centered-container">
         <ul
           class="flex flex-row justify-center font-semibold gap-x-20 text-[17px]">
-          <a href="/">Home</a>
-          <a *ngIf="isLoggedIn()" href="/create-post">Create Post</a>
-          <a>About</a>
-          <a>Pages</a>
+          <a routerLink="/">Home</a>
+          <a *ngIf="isLoggedIn()" routerLink="/create-post">Create Post</a>
+          <a *ngIf="isLoggedIn()" routerLink="/my-posts">My Posts</a>
         </ul>
       </div>
     </nav>
     <div class="flex text-lg gap-x-3">
-      <label class="swap swap-rotate hover:bg-neutral-300 px-4 py-2 rounded-lg">
-        <!-- this hidden checkbox controls the state -->
-        <input type="checkbox" (change)="toggleTheme()" />
-        <fa-icon
-          data-set-theme="light"
-          class="swap-on"
-          [icon]="faSun"></fa-icon>
-        <fa-icon
-          data-toggle-theme="dark"
-          class="swap-off"
-          [icon]="faMoon"></fa-icon>
-      </label>
-      <div class="dropdown dropdown-end">
-        <div
-          tabindex="0"
-          role="button"
-          class="hover:bg-neutral-300 px-4 py-2 rounded-lg">
-          <fa-icon [icon]="faUser"></fa-icon>
-        </div>
+      <div>
         <ul
           tabindex="0"
           class="dropdown-content z-[1] menu p-2 my-2 shadow bg-base-200 rounded-box w-40 font-atkinson">

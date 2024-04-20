@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TagComponent } from '../tag/tag.component';
+import { BlogPost } from '../../models/blog-post.interface';
 
 @Component({
   selector: 'app-blog-post',
@@ -8,4 +9,8 @@ import { TagComponent } from '../tag/tag.component';
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css',
 })
-export class BlogPostComponent {}
+export class BlogPostComponent {
+  @Input() blogPost!: BlogPost;
+
+  constructor() {}
+}

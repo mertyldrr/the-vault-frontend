@@ -4,6 +4,7 @@ import { LoginPage } from './pages/login/login-page.component';
 import { SignupPage } from './pages/signup/signup-page.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { AuthGuard } from './guards/auth.guard';
+import { MyPostsComponent } from './pages/my-posts/my-posts.component';
 
 export const routes: Route[] = [
   {
@@ -21,6 +22,11 @@ export const routes: Route[] = [
   {
     path: 'create-post',
     component: CreatePostComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-posts',
+    component: MyPostsComponent,
     canActivate: [AuthGuard],
   },
   {
