@@ -39,6 +39,12 @@ export class AuthService {
     );
   }
 
+  logout(): void {
+    removeToken(Token.Access);
+    removeToken(Token.Refresh);
+    this.router.navigate(['/']);
+  }
+
   refreshToken(): Observable<RefreshTokenResponseDto> {
     const storedRefreshToken = getStoredToken(Token.Refresh);
     const headers = new HttpHeaders({
@@ -47,11 +53,5 @@ export class AuthService {
     return this.http.get<RefreshTokenResponseDto>(`${this.apiUrl}/refresh`, {
       headers,
     });
-  }
-
-  logout(): void {
-    removeToken(Token.Access);
-    removeToken(Token.Refresh);
-    this.router.navigate(['/']);
   }
 }
