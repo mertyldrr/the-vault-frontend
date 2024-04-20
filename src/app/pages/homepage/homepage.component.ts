@@ -7,6 +7,7 @@ import { SignupPage } from '../signup/signup-page.component';
 import { LoginPage } from '../login/login-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AsyncPipe } from '@angular/common';
+import { MyPostsComponent } from '../my-posts/my-posts.component';
 
 @Component({
   selector: 'app-homepage',
@@ -20,6 +21,7 @@ import { AsyncPipe } from '@angular/common';
     FontAwesomeModule,
     LoginPage,
     AsyncPipe,
+    MyPostsComponent,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css',
