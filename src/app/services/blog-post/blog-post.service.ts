@@ -19,6 +19,10 @@ export class BlogPostService {
     return this.http.post<BlogPost>(`${this.apiUrl}`, blogPost);
   }
 
+  getBlogPostById(blogPostId: number): Observable<BlogPost> {
+    return this.http.get<BlogPost>(`${this.apiUrl}/${blogPostId}`);
+  }
+
   getBlogPostsByUserId(userId: number): Observable<Array<BlogPost>> {
     return this.http.get<Array<BlogPost>>(`${this.apiUrl}/${userId}/posts`);
   }
