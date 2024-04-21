@@ -3,18 +3,19 @@ import { BlogPostService } from '../../services/blog-post/blog-post.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { BlogPost } from '../../models/blog-post.interface';
 import { catchError, filter, Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { BlogPostComponent } from '../../components/blog-post/blog-post.component';
+import { BlogPostCardComponent } from '../../components/blog-post-card/blog-post-card.component';
 import { UserService } from '../../services/user/user.service';
 import { NgForOf } from '@angular/common';
+import { BlogPostPageComponent } from '../blog-post/blog-post-page.component';
 
 @Component({
   selector: 'app-my-posts',
   standalone: true,
-  imports: [BlogPostComponent, NgForOf],
-  templateUrl: './my-posts.component.html',
-  styleUrl: './my-posts.component.css',
+  imports: [BlogPostCardComponent, NgForOf, BlogPostPageComponent],
+  templateUrl: './my-posts-page.component.html',
+  styleUrl: './my-posts-page.component.css',
 })
-export class MyPostsComponent implements OnInit, OnDestroy {
+export class MyPostsPage implements OnInit, OnDestroy {
   private readonly destroy$: Subject<void> = new Subject();
   blogPosts: Array<BlogPost> = [];
   constructor(

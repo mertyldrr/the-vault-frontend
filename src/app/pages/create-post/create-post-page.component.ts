@@ -11,10 +11,10 @@ import { AuthService } from '../../services/auth/auth.service';
   selector: 'app-create-post',
   standalone: true,
   imports: [QuillEditorComponent, FormsModule],
-  templateUrl: './create-post.component.html',
-  styleUrl: './create-post.component.css',
+  templateUrl: './create-post-page.component.html',
+  styleUrl: './create-post-page.component.css',
 })
-export class CreatePostComponent {
+export class CreatePostPage {
   quillEditorRef: Quill | undefined = undefined;
   title: string = '';
   content: string = '';

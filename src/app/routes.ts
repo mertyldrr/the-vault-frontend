@@ -2,9 +2,10 @@ import { Route } from '@angular/router';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { LoginPage } from './pages/login/login-page.component';
 import { SignupPage } from './pages/signup/signup-page.component';
-import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { CreatePostPage } from './pages/create-post/create-post-page.component';
 import { AuthGuard } from './guards/auth.guard';
-import { MyPostsComponent } from './pages/my-posts/my-posts.component';
+import { MyPostsPage } from './pages/my-posts/my-posts-page.component';
+import { BlogPostPageComponent } from './pages/blog-post/blog-post-page.component';
 
 export const routes: Route[] = [
   {
@@ -21,13 +22,17 @@ export const routes: Route[] = [
   },
   {
     path: 'create-post',
-    component: CreatePostComponent,
+    component: CreatePostPage,
     canActivate: [AuthGuard],
   },
   {
     path: 'my-posts',
-    component: MyPostsComponent,
+    component: MyPostsPage,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'post/:id',
+    component: BlogPostPageComponent,
   },
   {
     path: '**',

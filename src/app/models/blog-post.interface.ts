@@ -4,8 +4,8 @@ export interface BlogPost {
   title: string;
   content: string;
   draft: boolean;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface BlogPostCreateDto {
