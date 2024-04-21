@@ -10,6 +10,7 @@ import {
 import { provideQuillConfig } from 'ngx-quill/config';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './utils/http-interceptors/auth-interceptor';
+import { provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     provideAnimations(),
+    provideMarkdown(),
     provideQuillConfig({
       placeholder: 'Start writing your blog post here',
       modules: {
