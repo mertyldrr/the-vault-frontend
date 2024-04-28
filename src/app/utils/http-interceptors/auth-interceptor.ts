@@ -82,8 +82,6 @@ export class AuthInterceptor implements HttpInterceptor {
     // Call your token refresh endpoint to get a new access token
     return this.authService.refreshToken().pipe(
       switchMap(({ refreshToken, accessToken }) => {
-        console.log(accessToken, 'new access token');
-
         // Update the stored access token only if it's not a refresh token request
         storeToken(Token.Access, accessToken);
         storeToken(Token.Refresh, refreshToken);
