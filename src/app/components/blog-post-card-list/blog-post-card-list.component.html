@@ -1,0 +1,10 @@
+<ng-container *ngIf="blogPosts$ | async as blogPosts">
+  @for (blogPost of blogPosts; track blogPost.id) {
+    <div>
+      <app-blog-post-card [blogPost]="blogPost"></app-blog-post-card>
+      <div class="border-b-2 border-gray-100 rounded-b-md"></div>
+    </div>
+  } @empty {
+    Empty list of posts
+  }
+</ng-container>
