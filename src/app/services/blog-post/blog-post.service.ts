@@ -27,6 +27,10 @@ export class BlogPostService {
     return this.http.get<Array<BlogPost>>(`${this.apiUrl}/${userId}/posts`);
   }
 
+  getBlogPostsRandom(): Observable<Array<BlogPost>> {
+    return this.http.get<Array<BlogPost>>(`${this.apiUrl}/random`);
+  }
+
   updateBlogPost(
     id: number,
     blogPost: BlogPostUpdateDto
