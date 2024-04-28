@@ -1,12 +1,12 @@
-<div class="flex flex-col bg-white">
+<div class="flex flex-col">
   <div class="flex flex-col gap-y-6 mt-20 px-32">
-    <div class="w-full">
+    <div class="w-full flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Title</h2>
       <input
         [(ngModel)]="title"
-        class="h-10 w-full font-sans rounded-md bg-platinum px-3" />
+        class="h-10 w-full font-sans rounded-md border-gray-300 border-[1px] px-3" />
     </div>
-    <div>
+    <div class="flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Content</h2>
       <quill-editor
         (onEditorCreated)="getEditorInstance($event)"
@@ -14,16 +14,10 @@
         class="quill-editor w-full font-sans"></quill-editor>
     </div>
     <div class="flex flex-row justify-end gap-x-6">
-      <button
-        (click)="submitHandler(true)"
-        class="bg-transparent hover:bg-outer-space text-onyx font-semibold hover:text-seasalt py-3 px-6 border border-outer-space hover:border-transparent rounded">
+      <button size="lg" hlmBtn variant="outline" (click)="submitHandler(true)">
         Save as draft
       </button>
-      <button
-        (click)="submitHandler(false)"
-        class="bg-outer-space hover:bg-onyx text-seasalt font-bold py-3 px-6 rounded">
-        Publish
-      </button>
+      <button size="lg" hlmBtn (click)="submitHandler(false)">Publish</button>
     </div>
   </div>
 </div>

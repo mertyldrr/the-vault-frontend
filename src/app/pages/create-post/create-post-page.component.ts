@@ -5,12 +5,12 @@ import { ImageUploadService } from '../../services/image-upload/image-upload.ser
 import { ImageUploadResponseDto } from '../../models/image-upload.interface';
 import { FormsModule } from '@angular/forms';
 import { BlogPostService } from '../../services/blog-post/blog-post.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [QuillEditorComponent, FormsModule],
+  imports: [QuillEditorComponent, FormsModule, HlmButtonDirective],
   templateUrl: './create-post-page.component.html',
   styleUrl: './create-post-page.component.css',
 })
@@ -21,8 +21,7 @@ export class CreatePostPage {
 
   constructor(
     private blogPostService: BlogPostService,
-    private imageUploadService: ImageUploadService,
-    private authService: AuthService
+    private imageUploadService: ImageUploadService
   ) {}
 
   getEditorInstance(editorInstance: any) {
@@ -100,7 +99,6 @@ export class CreatePostPage {
       })
       .catch(error => {
         console.error('Error uploading images:', error);
-        // Handle error if needed
       });
   }
 

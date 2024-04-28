@@ -1,8 +1,8 @@
-<header class="font-notoDisplay py-10 px-32">
+<header class="py-10 px-32">
   <div class="flex flex-row justify-between items-center">
-    <div class="font-bold text-[32px]">The Vault</div>
+    <div class="font-bold text-[32px] font-notoDisplay">The Vault</div>
     <nav class="flex items-center">
-      <div class="centered-container">
+      <div class="centered-container font-notoDisplay">
         <ul
           class="flex flex-row justify-center font-semibold gap-x-20 text-[17px]">
           <a routerLink="/">Home</a>
@@ -11,21 +11,12 @@
         </ul>
       </div>
     </nav>
-    <div class="flex text-lg gap-x-3">
+    <div class="flex text-lg gap-x-3 font-atkinson">
       <div>
-        <ul
-          tabindex="0"
-          class="p-2 my-2 shadow bg-base-200 rounded-box w-40 font-atkinson">
-          <li *ngIf="!isLoggedIn()">
-            <a (click)="navigateToLogin()">Login</a>
-          </li>
-          <li *ngIf="!isLoggedIn()">
-            <a (click)="navigateToSignUp()">Sign Up</a>
-          </li>
-          <li *ngIf="isLoggedIn()">
-            <a (click)="logout()">Logout</a>
-          </li>
-        </ul>
+        <button *ngIf="!isLoggedIn()" (click)="navigateToLogin()" hlmBtn>
+          Login
+        </button>
+        <button *ngIf="isLoggedIn()" (click)="logout()" hlmBtn>Logout</button>
       </div>
     </div>
   </div>
