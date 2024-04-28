@@ -9,15 +9,16 @@
     <div class="flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Content</h2>
       <quill-editor
+        [ngModel]="content"
         (onEditorCreated)="getEditorInstance($event)"
         format="html"
         class="quill-editor w-full font-sans"></quill-editor>
     </div>
-    <div class="flex flex-row justify-end gap-x-6">
-      <button size="lg" hlmBtn variant="outline" (click)="submitHandler(true)">
-        Save as draft
-      </button>
-      <button size="lg" hlmBtn (click)="submitHandler(false)">Publish</button>
-    </div>
+    <!--    <div class="flex flex-row justify-end gap-x-6">-->
+    <!--      <button size="lg" hlmBtn variant="outline" (click)="submitHandler(true)">-->
+    <!--        Save as draft-->
+    <!--      </button>-->
+    <!--      <button size="lg" hlmBtn (click)="submitHandler(false)">Publish</button>-->
+    <!--    </div>-->
   </div>
 </div>

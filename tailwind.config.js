@@ -17,6 +17,16 @@ module.exports = {
         ],
         atkinson: ['Atkinson Hyperlegible', 'sans-serif'],
       },
+      colors: {
+        error: '#e3342f', // Your custom error color
+        warning: '#f6993f', // Your custom warning color
+        success: '#38c172', // Your custom success color
+      },
+        textColor: {
+          'error': '#e3342f',
+          'warning': '#f6993f',
+          'success': '#38c172',
+        },
     },
   },
 };

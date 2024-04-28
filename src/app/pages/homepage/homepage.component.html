@@ -1,3 +1,6 @@
 <app-featured-blog-post></app-featured-blog-post>
-<app-my-posts></app-my-posts>
+<div class="flex flex-col justify-between w-2/3 px-32 py-16 flex-wrap">
+  <app-blog-post-card-list [blogPosts$]="blogPosts$"></app-blog-post-card-list>
+</div>
+
 <app-footer></app-footer>
