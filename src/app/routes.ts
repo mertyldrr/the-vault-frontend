@@ -1,16 +1,18 @@
 import { Route } from '@angular/router';
-import { HomepageComponent } from './pages/homepage/homepage.component';
+import { HomePage } from './pages/homepage/homepage.component';
 import { LoginPage } from './pages/login/login-page.component';
 import { SignupPage } from './pages/signup/signup-page.component';
 import { CreatePostPage } from './pages/create-post/create-post-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { BlogPostPage } from './pages/blog-post/blog-post-page.component';
 import { MyPostsPage } from './pages/my-posts/my-posts-page.component';
-import { BlogPostPageComponent } from './pages/blog-post/blog-post-page.component';
+import { BlogPostAccessGuard } from './guards/blog-post-access.guard';
+import { EditBlogPostPage } from './pages/edit-blog-post/edit-blog-post-page.component';
 
 export const routes: Route[] = [
   {
     path: '',
-    component: HomepageComponent,
+    component: HomePage,
   },
   {
     path: 'login',
@@ -31,8 +33,13 @@ export const routes: Route[] = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'post/:id/edit',
+    component: EditBlogPostPage,
+    canActivate: [AuthGuard, BlogPostAccessGuard],
+  },
+  {
     path: 'post/:id',
-    component: BlogPostPageComponent,
+    component: BlogPostPage,
   },
   {
     path: '**',
