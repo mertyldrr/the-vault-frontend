@@ -1,6 +1,6 @@
-<ng-container *ngIf="blogPost">
-  <div class="flex justify-center">
-    <div class="max-w-[700px] flex flex-col pt-10 pb-20">
+<ng-container *ngIf="blogPost$ | async as blogPost">
+  <div class="flex flex-col justify-center w-full px-32">
+    <div class="w-full flex flex-col pt-10 pb-20">
       <div>
         <h1 class="font-notoSerif text-3xl text-center">
           {{ blogPost.title }}
@@ -13,7 +13,16 @@
           theme="snow"></quill-view-html>
       </div>
     </div>
+    <div class="flex flex-row justify-center space-x-4">
+      <button hlmBtn (click)="navigateToEdit(blogPost.id.toString())">
+        <hlm-icon size="sm" class="mr-2" name="lucideFilePen"></hlm-icon>
+        Edit
+      </button>
+      <button hlmBtn variant="destructive">
+        <hlm-icon size="sm" class="mr-2" name="lucideTrash2"></hlm-icon>
+        Delete
+      </button>
+    </div>
   </div>
-  <button hlmBtn (click)="navigateToEdit()">Edit</button>
   <app-footer></app-footer>
 </ng-container>
