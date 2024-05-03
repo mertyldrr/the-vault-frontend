@@ -59,6 +59,12 @@ importers:
       '@fortawesome/free-solid-svg-icons':
         specifier: ^6.5.1
         version: 6.5.1
+      '@ng-icons/core':
+        specifier: ^25.6.1
+        version: 25.6.1
+      '@ng-icons/lucide':
+        specifier: ^27.3.1
+        version: 27.3.1
       '@spartan-ng/ui-core':
         specifier: 0.0.1-alpha.344
         version: 0.0.1-alpha.344(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3))(clsx@1.2.1)(rxjs@7.8.1)(tailwind-merge@2.2.2)(tailwindcss-animate@1.0.7(tailwindcss@3.4.1(ts-node@10.9.1(@types/node@20.12.7)(typescript@5.3.3))))(tailwindcss@3.4.1(ts-node@10.9.1(@types/node@20.12.7)(typescript@5.3.3)))
@@ -72,11 +78,11 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       ngx-quill:
-        specifier: ^25.0.0
-        version: 25.0.0(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3))(quill@2.0.0-rc.0)(rxjs@7.8.1)
+        specifier: ^25.3.2
+        version: 25.3.2(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3))(quill@2.0.1)(rxjs@7.8.1)
       quill:
-        specifier: 2.0.0-rc.0
-        version: 2.0.0-rc.0
+        specifier: 2.0.1
+        version: 2.0.1
       rxjs:
         specifier: ~7.8.1
         version: 7.8.1
@@ -2006,6 +2012,12 @@ packages:
 
   '@material/typography@15.0.0-canary.7f224ddd4.0':
     resolution: {integrity: sha512-kBaZeCGD50iq1DeRRH5OM5Jl7Gdk+/NOfKArkY4ksBZvJiStJ7ACAhpvb8MEGm4s3jvDInQFLsDq3hL+SA79sQ==}
+
+  '@ng-icons/core@25.6.1':
+    resolution: {integrity: sha512-o6vCttlzXvDZRYiOKOULr7fsX8gY/DwwxzBSrBQzwa/at+pC0xRoe6uczJ9Ato+y1EDWP/PlrEMAQfvokBA6tQ==}
+
+  '@ng-icons/lucide@27.3.1':
+    resolution: {integrity: sha512-Hul72DQcuQZGnvJa+7gge7FdZ3JxVxCCJJVfQiZ4GruPqeFMaid4mQv0r1kLaZhLLdKQU/JFf4ks7V1F74gNJA==}
 
   '@ngtools/webpack@17.3.4':
     resolution: {integrity: sha512-3uNX4tRTKPm91mSQcnmQtqDMMKLGDevJERSPJU7hlOXZZ05QrT4et1mwvXNYYMpXqi2OkC7D4ryIS2YxAiItBA==}
@@ -4810,12 +4822,12 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  ngx-quill@25.0.0:
-    resolution: {integrity: sha512-PBU3LuOSycgS8d1to+EAm4W8PzgyIN83WUhyK270Rrof3FgyuBLmX4oWrDED+Gy7PG489xp3stJxl30FrAtkBg==}
+  ngx-quill@25.3.2:
+    resolution: {integrity: sha512-CukrvIm2XbcoS1ry23UyCIT/7lN/Et/IZsgQP1TW8C4X1b7VZ/H53Ki1jRBEL59u/xH71my9zkp7+kWH86j3vQ==}
     engines: {node: '>=18'}
     peerDependencies:
       '@angular/core': ^17.0.0
-      quill: 2.0.0-rc.0
+      quill: ^2.0.0
       rxjs: ^7.0.0
 
   nice-napi@1.0.2:
@@ -5024,8 +5036,8 @@ packages:
   parchment@1.1.4:
     resolution: {integrity: sha512-J5FBQt/pM2inLzg4hEWmzQx/8h8D0CiDxaG3vyp9rKrQRSDgBlhjdP5jQGgosEajXPSQouXGHOmVdgo7QmJuOg==}
 
-  parchment@3.0.0-alpha.2:
-    resolution: {integrity: sha512-r/DoIj7e8efiTWUg+BHUlolpdE9/iNVtcFg8i7SvdlF7a7fgTAAwcXrpamNrf49IsGykyDcsfUZKGFVwMXZcyg==}
+  parchment@3.0.0:
+    resolution: {integrity: sha512-HUrJFQ/StvgmXRcQ1ftY6VEZUq3jA2t9ncFN4F84J/vN0/FPpQF+8FKXb3l6fLces6q0uOHj6NJn+2xvZnxO6A==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -5486,8 +5498,8 @@ packages:
     resolution: {integrity: sha512-X74oCeRI4/p0ucjb5Ma8adTXd9Scumz367kkMK5V/IatcX6A0vlgLgKbzXWy5nZmCGeNJm2oQX0d2Eqj+ZIlCA==}
     engines: {node: '>= 12.0.0'}
 
-  quill@2.0.0-rc.0:
-    resolution: {integrity: sha512-LC9TCvNiHn0U2q5o1a/G1IdkdrcMRcCXuXl39duiPKPded8FzaNVy4yzZGvZlzRYHAw4/WA4jzXyKI1kRivx9Q==}
+  quill@2.0.1:
+    resolution: {integrity: sha512-HtZSieCRgGCfXkc0a4r+e4NlITvl1C1B2cpS+NyNsDskomj+MbfCcUlZ8JxgPCCwmq/vIDbYuyumDkJKVeBcXg==}
     engines: {npm: '>=8.2.3'}
 
   randombytes@2.1.0:
@@ -9242,6 +9254,14 @@ snapshots:
       '@material/theme': 15.0.0-canary.7f224ddd4.0
       tslib: 2.6.2
 
+  '@ng-icons/core@25.6.1':
+    dependencies:
+      tslib: 2.6.2
+
+  '@ng-icons/lucide@27.3.1':
+    dependencies:
+      tslib: 2.6.2
+
   '@ngtools/webpack@17.3.4(@angular/compiler-cli@17.3.4(@angular/compiler@17.3.4(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3)))(typescript@5.3.3))(typescript@5.3.3)(webpack@5.90.3(esbuild@0.20.1))':
     dependencies:
       '@angular/compiler-cli': 17.3.4(@angular/compiler@17.3.4(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3)))(typescript@5.3.3)
@@ -12791,10 +12811,10 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  ngx-quill@25.0.0(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3))(quill@2.0.0-rc.0)(rxjs@7.8.1):
+  ngx-quill@25.3.2(@angular/core@17.3.4(rxjs@7.8.1)(zone.js@0.14.3))(quill@2.0.1)(rxjs@7.8.1):
     dependencies:
       '@angular/core': 17.3.4(rxjs@7.8.1)(zone.js@0.14.3)
-      quill: 2.0.0-rc.0
+      quill: 2.0.1
       rxjs: 7.8.1
       tslib: 2.6.2
 
@@ -13125,7 +13145,7 @@ snapshots:
 
   parchment@1.1.4: {}
 
-  parchment@3.0.0-alpha.2: {}
+  parchment@3.0.0: {}
 
   parent-module@1.0.1:
     dependencies:
@@ -13541,11 +13561,11 @@ snapshots:
       lodash.clonedeep: 4.5.0
       lodash.isequal: 4.5.0
 
-  quill@2.0.0-rc.0:
+  quill@2.0.1:
     dependencies:
       eventemitter3: 5.0.1
       lodash-es: 4.17.21
-      parchment: 3.0.0-alpha.2
+      parchment: 3.0.0
       quill-delta: 5.1.0
 
   randombytes@2.1.0:
