@@ -1,3 +1,7 @@
+<div *ngIf="isLoading">
+  <app-loading-overlay [twColor]="spinnerColor || 'border-blue-400'"></app-loading-overlay>
+</div>
+
 <div class="flex flex-col">
   <div class="flex flex-col gap-y-6 mt-20 px-32">
     <div class="w-full flex flex-col gap-y-2">
@@ -9,16 +13,18 @@
     <div class="flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Content</h2>
       <quill-editor
-        [ngModel]="content"
+        [(ngModel)]="content"
         (onEditorCreated)="getEditorInstance($event)"
         format="html"
         class="quill-editor w-full font-sans"></quill-editor>
     </div>
-    <!--    <div class="flex flex-row justify-end gap-x-6">-->
-    <!--      <button size="lg" hlmBtn variant="outline" (click)="submitHandler(true)">-->
-    <!--        Save as draft-->
-    <!--      </button>-->
-    <!--      <button size="lg" hlmBtn (click)="submitHandler(false)">Publish</button>-->
-    <!--    </div>-->
+
+    <div class="flex flex-row justify-end gap-x-6">
+      <button hlmBtn (click)="cancelHandler()" variant="destructive">Cancel</button>
+      <button *ngIf="draft" size="lg" hlmBtn variant="outline" (click)="updateHandler(true)">
+        Publish
+      </button>
+      <button hlmBtn (click)="updateHandler(false)">Update</button>
+    </div>
   </div>
 </div>
