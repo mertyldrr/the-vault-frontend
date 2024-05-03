@@ -1,9 +1,4 @@
-import {
-  AbstractControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-} from '@angular/forms';
+import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 const lowerCaseRegex = /(?=.*[a-z])/;
 const upperCaseRegex = /(?=.*[A-Z])/;
@@ -26,8 +21,7 @@ export function passwordMatchValidator(): ValidatorFn {
 export function lowercaseCharValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const passwordValue: string = control.value;
-    const validationResult =
-      !!passwordValue && lowerCaseRegex.test(passwordValue);
+    const validationResult = !!passwordValue && lowerCaseRegex.test(passwordValue);
 
     if (!validationResult) {
       return { unmetLowercase: true };
@@ -39,8 +33,7 @@ export function lowercaseCharValidator(): ValidatorFn {
 export function uppercaseCharValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const passwordValue: string = control.value;
-    const validationResult =
-      !!passwordValue && upperCaseRegex.test(passwordValue);
+    const validationResult = !!passwordValue && upperCaseRegex.test(passwordValue);
 
     if (!validationResult) {
       return { unmetUppercase: true };

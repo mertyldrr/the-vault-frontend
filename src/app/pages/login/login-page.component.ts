@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { ValidationFeedbackComponent } from '../../components/error-validation/validation-feedback.component';
@@ -71,7 +66,7 @@ export class LoginPage {
         },
         error: err => {
           this.isLoading = false;
-          this.spinnerColor = undefined;
+          this.spinnerColor = 'border-red-400';
           console.log(err);
         },
         complete: () => {

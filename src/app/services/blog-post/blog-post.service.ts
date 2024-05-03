@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import {
-  BlogPost,
-  BlogPostCreateDto,
-  BlogPostUpdateDto,
-} from '../../models/blog-post.interface';
+import { BlogPost, BlogPostCreateDto, BlogPostUpdateDto } from '../../models/blog-post.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -31,10 +27,7 @@ export class BlogPostService {
     return this.http.get<Array<BlogPost>>(`${this.apiUrl}/random`);
   }
 
-  updateBlogPost(
-    id: number,
-    blogPost: BlogPostUpdateDto
-  ): Observable<BlogPost> {
+  updateBlogPost(id: number, blogPost: BlogPostUpdateDto): Observable<BlogPost> {
     return this.http.patch<BlogPost>(`${this.apiUrl}/${id}`, blogPost);
   }
 }

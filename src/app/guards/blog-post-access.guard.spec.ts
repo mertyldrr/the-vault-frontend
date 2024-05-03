@@ -5,9 +5,7 @@ import { BlogPostAccessGuard } from './blog-post-access.guard';
 
 describe('blogPostAccessGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) =>
-    TestBed.runInInjectionContext(() =>
-      BlogPostAccessGuard(...guardParameters)
-    );
+    TestBed.runInInjectionContext(() => BlogPostAccessGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
