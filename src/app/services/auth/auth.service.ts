@@ -33,10 +33,7 @@ export class AuthService {
   }
 
   login(credentials: AuthRequestDto): Observable<AuthenticatedUser> {
-    return this.http.post<AuthenticatedUser>(
-      `${this.apiUrl}/login`,
-      credentials
-    );
+    return this.http.post<AuthenticatedUser>(`${this.apiUrl}/login`, credentials);
   }
 
   logout(): void {

@@ -17,10 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
   apiUrl = environment.apiUrl + '/auth';
   constructor(private authService: AuthService) {}
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Get the auth token from local storage
     const accessToken = getStoredToken(Token.Access);
     const refreshToken = getStoredToken(Token.Refresh);

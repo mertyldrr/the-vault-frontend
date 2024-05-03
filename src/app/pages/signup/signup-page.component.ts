@@ -1,17 +1,7 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import {
-  faCheck,
-  faEye,
-  faEyeSlash,
-  faXmark,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEye, faEyeSlash, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { NgClass } from '@angular/common';
 import { ValidationFeedbackComponent } from '../../components/error-validation/validation-feedback.component';
@@ -51,10 +41,7 @@ export class SignupPage {
       firstName: new FormControl<string | null>(null),
       lastName: new FormControl<string | null>(null),
       userName: new FormControl<string | null>(null),
-      email: new FormControl<string>('', [
-        Validators.required,
-        Validators.email,
-      ]),
+      email: new FormControl<string>('', [Validators.required, Validators.email]),
       password: new FormControl<string>('', [
         Validators.required,
         minLengthValidator(8),

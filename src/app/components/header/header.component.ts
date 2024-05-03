@@ -5,18 +5,12 @@ import { ThemeService } from '../../theme/theme.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { NgIf } from '@angular/common';
-import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { HlmButtonDirective } from '../../spartan-ui/ui-button-helm/src';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    FontAwesomeModule,
-    NgIf,
-    RouterLink,
-    RouterModule,
-    HlmButtonDirective,
-  ],
+  imports: [FontAwesomeModule, NgIf, RouterLink, RouterModule, HlmButtonDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })

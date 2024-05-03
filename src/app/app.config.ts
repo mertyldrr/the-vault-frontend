@@ -2,11 +2,7 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './routes';
 import { ThemeService } from './theme/theme.service';
-import {
-  HTTP_INTERCEPTORS,
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideQuillConfig } from 'ngx-quill/config';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './utils/http-interceptors/auth-interceptor';

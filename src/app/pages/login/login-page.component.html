@@ -1,6 +1,5 @@
 <div *ngIf="isLoading">
-  <app-loading-overlay
-    [twColor]="spinnerColor || 'border-blue-400'"></app-loading-overlay>
+  <app-loading-overlay [twColor]="spinnerColor || 'border-blue-400'"></app-loading-overlay>
 </div>
 
 <div class="h-[calc(100vh-8rem)] flex flex-col justify-center bg-base-300">
@@ -10,8 +9,7 @@
         <div class="flex items-start">
           <div class="w-full flex flex-col gap-y-3 p-2 relative">
             <div class="flex flex-col gap-y-4">
-              <h3
-                class="font-notoDisplay font-semibold text-[32px] leading-6 text-gray-900">
+              <h3 class="font-notoDisplay font-semibold text-[32px] leading-6 text-gray-900">
                 Welcome back!
               </h3>
               <p class="font-notoDisplay text-sm text-gray-500">
@@ -19,10 +17,7 @@
               </p>
             </div>
 
-            <form
-              [formGroup]="loginForm"
-              (ngSubmit)="onLogin()"
-              class="flex flex-col gap-y-3">
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="flex flex-col gap-y-3">
               <div class="flex flex-col">
                 <label class="form-label" for="email">Email (*)</label>
                 <input
@@ -59,14 +54,10 @@
                     [icon]="passwordVisible ? faEyeSlash : faEye"></fa-icon>
                 </div>
               </div>
-              <div
-                class="flex flex-row justify-between items-center font-atkinson">
+              <div class="flex flex-row justify-between items-center font-atkinson">
                 <div class="form-control">
                   <label class="label cursor-pointer space-x-2 items-center">
-                    <input
-                      type="checkbox"
-                      checked="checked"
-                      class="checkbox w-4 h-4" />
+                    <input type="checkbox" checked="checked" class="checkbox w-4 h-4" />
                     <span class="text-sm text-gray-900">Remember me</span>
                   </label>
                 </div>
@@ -79,14 +70,9 @@
                   class="w-full flex flex-col justify-center items-center rounded-md bg-success disabled:bg-neutral-300 px-3 py-3 text-white shadow-sm font-atkinson">
                   Login
                 </button>
-                <div
-                  class="flex justify-center items-center gap-x-1 font-atkinson">
+                <div class="flex justify-center items-center gap-x-1 font-atkinson">
                   <span>Don't have an account?</span>
-                  <a
-                    class="cursor-pointer text-blue-400"
-                    (click)="navigateToSignUp()"
-                    >Sign up</a
-                  >
+                  <a class="cursor-pointer text-blue-400" (click)="navigateToSignUp()">Sign up</a>
                 </div>
               </div>
             </form>

@@ -3,8 +3,7 @@
     <div class="font-bold text-[32px] font-notoDisplay">The Vault</div>
     <nav class="flex items-center">
       <div class="centered-container font-notoDisplay">
-        <ul
-          class="flex flex-row justify-center font-semibold gap-x-20 text-[17px]">
+        <ul class="flex flex-row justify-center font-semibold gap-x-20 text-[17px]">
           <a routerLink="/">Home</a>
           <a *ngIf="isLoggedIn()" routerLink="/create-post">Create Post</a>
           <a *ngIf="isLoggedIn()" routerLink="/my-posts">My Posts</a>
@@ -13,9 +12,7 @@
     </nav>
     <div class="flex text-lg gap-x-3 font-atkinson">
       <div>
-        <button *ngIf="!isLoggedIn()" (click)="navigateToLogin()" hlmBtn>
-          Login
-        </button>
+        <button *ngIf="!isLoggedIn()" (click)="navigateToLogin()" hlmBtn>Login</button>
         <button *ngIf="isLoggedIn()" (click)="logout()" hlmBtn>Logout</button>
       </div>
     </div>
