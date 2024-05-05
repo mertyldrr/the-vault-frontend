@@ -2,8 +2,23 @@
   <app-loading-overlay [twColor]="spinnerColor || 'border-blue-400'"></app-loading-overlay>
 </div>
 
-<div class="flex flex-col">
+<div class="flex flex-col pb-20">
   <div class="flex flex-col gap-y-6 mt-20 px-32">
+    <div class="w-full flex flex-col gap-y-2">
+      <h2 class="font-atkinson font-bold text-xl">Thumbnail</h2>
+      <div>
+        <button hlmBtn (click)="triggerFileInput()" variant="outline">Browse Files</button>
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          (change)="handleThumbnailUpload($event)"
+          hidden
+          #fileInput />
+      </div>
+    </div>
+    <div *ngIf="thumbnailUrl">
+      <img [src]="thumbnailUrl" alt="Uploaded Image" />
+    </div>
     <div class="w-full flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Title</h2>
       <input
@@ -20,11 +35,11 @@
     </div>
 
     <div class="flex flex-row justify-end gap-x-6">
-      <button hlmBtn (click)="cancelHandler()" variant="destructive">Cancel</button>
+      <button hlmBtn size="lg" (click)="cancelHandler()" variant="destructive">Cancel</button>
       <button *ngIf="draft" size="lg" hlmBtn variant="outline" (click)="updateHandler(true)">
         Publish
       </button>
-      <button hlmBtn (click)="updateHandler(false)">Update</button>
+      <button hlmBtn size="lg" (click)="updateHandler(false)">Update</button>
     </div>
   </div>
 </div>

@@ -25,11 +25,11 @@
             {{ blogPost.content }}
           </p>
         </div>
-        <div class="min-w-[200px] h-[134px]">
+        <div>
           <img
-            src="assets/sample-image.jpg"
+            [src]="blogPost.thumbnailUrl"
             alt="Image Description"
-            class="w-full h-full object-cover rounded-lg" />
+            class="w-[200px] h-[134px] object-contain rounded-lg" />
         </div>
       </a>
     </div>

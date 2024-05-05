@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { BlogPost, BlogPostCreateDto, BlogPostUpdateDto } from '../../models/blog-post.interface';
+import { BlogPost, BlogPostUpdateDto } from '../../models/blog-post.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class BlogPostService {
   private apiUrl = environment.apiUrl + '/blog-post';
   constructor(private http: HttpClient) {}
 
-  createBlogPost(blogPost: BlogPostCreateDto): Observable<BlogPost> {
+  createBlogPost(blogPost: FormData): Observable<BlogPost> {
     return this.http.post<BlogPost>(`${this.apiUrl}`, blogPost);
   }
 

@@ -1,5 +1,20 @@
 <div class="flex flex-col">
-  <div class="flex flex-col gap-y-6 mt-20 px-32">
+  <div class="flex flex-col gap-y-6 py-20 px-32">
+    <div class="w-full flex flex-col gap-y-2">
+      <h2 class="font-atkinson font-bold text-xl">Thumbnail</h2>
+      <div>
+        <button hlmBtn (click)="triggerFileInput()" variant="outline">Browse Files</button>
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          (change)="handleThumbnailUpload($event)"
+          hidden
+          #fileInput />
+      </div>
+    </div>
+    <div *ngIf="thumbnailUrl">
+      <img [src]="thumbnailUrl" alt="Uploaded Image" />
+    </div>
     <div class="w-full flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Title</h2>
       <input
@@ -9,15 +24,25 @@
     <div class="flex flex-col gap-y-2">
       <h2 class="font-atkinson font-bold text-xl">Content</h2>
       <quill-editor
+        [(ngModel)]="content"
         (onEditorCreated)="getEditorInstance($event)"
         format="html"
         class="quill-editor w-full font-sans"></quill-editor>
     </div>
     <div class="flex flex-row justify-end gap-x-6">
-      <button size="lg" hlmBtn variant="outline" (click)="submitHandler(true)">
+      <button size="lg" hlmBtn (click)="navigateToHomePage()" variant="destructive">Cancel</button>
+
+      <button
+        size="lg"
+        hlmBtn
+        variant="outline"
+        (click)="submitHandler(true)"
+        [disabled]="shouldDisableButton()">
         Save as draft
       </button>
-      <button size="lg" hlmBtn (click)="submitHandler(false)">Publish</button>
+      <button size="lg" hlmBtn (click)="submitHandler(false)" [disabled]="shouldDisableButton()">
+        Publish
+      </button>
     </div>
   </div>
 </div>
