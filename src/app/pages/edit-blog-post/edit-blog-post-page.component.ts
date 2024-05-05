@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Location, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { BlogPost, BlogPostUpdateDto } from '../../models/blog-post.interface';
@@ -7,7 +7,7 @@ import { BlogPostService } from '../../services/blog-post/blog-post.service';
 import { QuillEditorComponent, QuillViewHTMLComponent } from 'ngx-quill';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Quill from 'quill';
-import { prepareImageUpload } from '../../utils/utils';
+import { getThumbnail, prepareQuillImageUpload } from '../../utils/utils';
 import { ImageUploadService } from '../../services/image-upload/image-upload.service';
 import { HlmButtonDirective } from '../../spartan-ui/ui-button-helm/src';
 import { LoadingOverlayComponent } from '../../components/loading-overlay/loading-overlay.component';
@@ -36,8 +36,11 @@ export class EditBlogPostPage implements OnInit, OnDestroy {
   content: string = '';
   draft: boolean = false;
   blogPost!: BlogPost;
+  thumbnail: File | null = null;
+  thumbnailUrl: string | null = null;
   isLoading = false;
   public spinnerColor: string | undefined = undefined;
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,6 +73,9 @@ export class EditBlogPostPage implements OnInit, OnDestroy {
         this.title = blogPost.title;
         this.content = blogPost.content;
         this.draft = blogPost.draft;
+        if (blogPost.thumbnailUrl) {
+          this.thumbnailUrl = blogPost.thumbnailUrl;
+        }
       });
   }
 
@@ -96,12 +102,32 @@ export class EditBlogPostPage implements OnInit, OnDestroy {
     };
     return this.blogPostService.updateBlogPost(this.blogPost.id, blogPostUpdateDto);
   }
+
+  async handleThumbnailUpload($event: Event) {
+    try {
+      const result = await getThumbnail($event, 400, 300);
+      if (result) {
+        // Do something with the thumbnail and thumbnailUrl
+        this.thumbnail = result.thumbnail;
+        this.thumbnailUrl = result.thumbnailUrl;
+      } else {
+        console.error('Thumbnail upload returned undefined.');
+      }
+    } catch (error) {
+      console.error('Error handling thumbnail upload:', error);
+    }
+  }
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+
   updateHandler(draft: boolean) {
     this.isLoading = true;
     if (this.title.trim() === '') {
       // TODO: do not allow the user to submit the form if the title is empty
     }
-    const uploadPromises: Promise<void>[] = prepareImageUpload(
+    const uploadPromises: Promise<void>[] = prepareQuillImageUpload(
       this.quillEditorRef,
       this.imageUploadService
     );
