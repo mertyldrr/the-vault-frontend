@@ -137,7 +137,7 @@ export async function getThumbnail($event: Event, maxWidth: number, maxHeight: n
       const thumbnailUrl = await readFileAsDataURL(thumbnail);
       return { thumbnail, thumbnailUrl };
     } catch (error) {
-      console.error('Error resizing thumbnail:', error);
+      console.error('Error resizing thumbnail:', error.message);
     }
   }
   // Return undefined if no files are present
