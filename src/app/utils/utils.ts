@@ -116,11 +116,11 @@ export function resizeImage(file: File, maxWidth: number, maxHeight: number): Pr
           resolve(resizedFile);
         }, file.type);
       } else {
-        reject(new Error('Failed to resize image.'));
+        reject(new Error('Canvas context is null, failed to resize image.'));
       }
     };
     img.onerror = () => {
-      reject(new Error('Failed to load image.'));
+      reject(new Error('Image loading error, possibly due to invalid file type or corrupted file.'));
     };
     img.src = URL.createObjectURL(file);
   });
