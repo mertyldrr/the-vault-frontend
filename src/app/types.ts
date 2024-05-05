@@ -9,3 +9,7 @@ export enum Token {
   Access = 'access-token',
   Refresh = 'refresh-token',
 }
+
+export interface FileInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}
