@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { QuillEditorComponent } from 'ngx-quill';
 import Quill from 'quill';
 import { ImageUploadService } from '../../services/image-upload/image-upload.service';
 import { FormsModule } from '@angular/forms';
 import { BlogPostService } from '../../services/blog-post/blog-post.service';
-import { prepareImageUpload } from '../../utils/utils';
+import { getThumbnail, prepareQuillImageUpload } from '../../utils/utils';
 import { HlmButtonDirective } from '../../spartan-ui/ui-button-helm/src';
+import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [QuillEditorComponent, FormsModule, HlmButtonDirective],
+  imports: [QuillEditorComponent, FormsModule, HlmButtonDirective, NgIf],
   templateUrl: './create-post-page.component.html',
   styleUrl: './create-post-page.component.css',
 })
@@ -18,40 +20,38 @@ export class CreatePostPage {
   quillEditorRef: Quill | undefined = undefined;
   title: string = '';
   content: string = '';
+  thumbnail: File | null = null;
+  thumbnailUrl: string | null = null;
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   constructor(
     private blogPostService: BlogPostService,
-    private imageUploadService: ImageUploadService
+    private imageUploadService: ImageUploadService,
+    private router: Router
   ) {}
 
-  getEditorInstance(editorInstance: any) {
-    this.quillEditorRef = editorInstance;
-  }
-
   createPost = (draft: boolean) => {
-    const content = this.quillEditorRef?.getSemanticHTML() || '';
-    this.blogPostService
-      .createBlogPost({
-        title: this.title,
-        content: content,
-        draft: draft,
-      })
-      .subscribe({
-        next: blogPost => {
-          console.log('Post created successfully');
-        },
-        error: error => {
-          console.error('Error creating post:', error);
-        },
-      });
+    const blogPost = new FormData();
+
+    blogPost.append('title', this.title);
+    blogPost.append('content', this.content);
+    blogPost.append('draft', JSON.stringify(draft));
+    if (this.thumbnail) {
+      blogPost.append('thumbnail', this.thumbnail);
+    }
+    this.blogPostService.createBlogPost(blogPost).subscribe({
+      next: blogPost => {
+        console.log('Post created successfully', blogPost);
+        this.navigateToHomePage();
+      },
+      error: error => {
+        console.error('Error creating post:', error);
+      },
+    });
   };
 
   submitHandler(draft: boolean) {
-    if (this.title.trim() === '') {
-      // TODO: do not allow the user to submit the form if the title is empty
-    }
-
-    const uploadPromises: Promise<void>[] = prepareImageUpload(
+    const uploadPromises: Promise<void>[] = prepareQuillImageUpload(
       this.quillEditorRef,
       this.imageUploadService
     );
@@ -64,5 +64,38 @@ export class CreatePostPage {
       .catch(error => {
         console.error('Error uploading images:', error);
       });
+  }
+
+  async handleThumbnailUpload($event: Event) {
+    console.log('handle upload');
+    try {
+      const result = await getThumbnail($event, 400, 300);
+      console.log(result, 'res');
+      if (result) {
+        // Do something with the thumbnail and thumbnailUrl
+        this.thumbnail = result.thumbnail;
+        this.thumbnailUrl = result.thumbnailUrl;
+      } else {
+        console.error('Thumbnail upload returned undefined.');
+      }
+    } catch (error) {
+      console.error('Error handling thumbnail upload:', error);
+    }
+  }
+
+  navigateToHomePage() {
+    this.router.navigate(['/']);
+  }
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+
+  shouldDisableButton() {
+    return this.title.trim() === '' || this.content.trim() === '';
+  }
+
+  getEditorInstance(editorInstance: any) {
+    this.quillEditorRef = editorInstance;
   }
 }
