@@ -120,7 +120,9 @@ export function resizeImage(file: File, maxWidth: number, maxHeight: number): Pr
       }
     };
     img.onerror = () => {
-      reject(new Error('Image loading error, possibly due to invalid file type or corrupted file.'));
+      reject(
+        new Error('Image loading error, possibly due to invalid file type or corrupted file.')
+      );
     };
     img.src = URL.createObjectURL(file);
   });
@@ -137,7 +139,7 @@ export async function getThumbnail($event: Event, maxWidth: number, maxHeight: n
       const thumbnailUrl = await readFileAsDataURL(thumbnail);
       return { thumbnail, thumbnailUrl };
     } catch (error) {
-      console.error('Error resizing thumbnail:', error.message);
+      console.error('Error resizing thumbnail:', error);
     }
   }
   // Return undefined if no files are present
