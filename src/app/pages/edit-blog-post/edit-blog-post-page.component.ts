@@ -114,7 +114,7 @@ export class EditBlogPostPage implements OnInit, OnDestroy {
         console.error('Thumbnail upload returned undefined.');
       }
     } catch (error) {
-      console.error('Error handling thumbnail upload:', error);
+      console.error('Error handling thumbnail upload:', error.message);
     }
   }
 
