@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Location, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { BlogPost, BlogPostUpdateDto } from '../../models/blog-post.interface';
+import { BlogPost } from '../../models/blog-post.interface';
 import { catchError, Subject, switchMap, takeUntil, throwError } from 'rxjs';
 import { BlogPostService } from '../../services/blog-post/blog-post.service';
 import { QuillEditorComponent, QuillViewHTMLComponent } from 'ngx-quill';
@@ -93,14 +93,16 @@ export class EditBlogPostPage implements OnInit, OnDestroy {
   }
 
   updatePost(draft: boolean) {
-    console.log('update started');
-    const content = this.quillEditorRef?.getSemanticHTML() || '';
-    const blogPostUpdateDto: BlogPostUpdateDto = {
-      title: this.title,
-      content,
-      draft: this.draft,
-    };
-    return this.blogPostService.updateBlogPost(this.blogPost.id, blogPostUpdateDto);
+    const blogPost = new FormData();
+    const content = this.quillEditorRef!.getSemanticHTML();
+
+    blogPost.append('title', this.title);
+    blogPost.append('content', content);
+    blogPost.append('draft', JSON.stringify(draft));
+    if (this.thumbnail) {
+      blogPost.append('thumbnail', this.thumbnail);
+    }
+    return this.blogPostService.updateBlogPost(this.blogPost.id, blogPost);
   }
 
   async handleThumbnailUpload($event: Event) {
@@ -122,12 +124,13 @@ export class EditBlogPostPage implements OnInit, OnDestroy {
     this.fileInput.nativeElement.click();
   }
 
-  updateHandler(draft: boolean) {
+  updateHandler(draft: boolean, s3FolderId: string) {
     this.isLoading = true;
     if (this.title.trim() === '') {
       // TODO: do not allow the user to submit the form if the title is empty
     }
     const uploadPromises: Promise<void>[] = prepareQuillImageUpload(
+      s3FolderId,
       this.quillEditorRef,
       this.imageUploadService
     );
