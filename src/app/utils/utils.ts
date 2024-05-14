@@ -15,25 +15,35 @@ export function dataURItoBlob(dataURI: string): Blob {
 
 // Create a utility function for uploading images
 export function prepareQuillImageUpload(
+  s3FolderId: string,
   quillEditorRef: Quill | undefined,
   imageUploadService: ImageUploadService
 ): Array<Promise<void>> {
-  const imgElements = document.querySelectorAll(
+  const quillEditor = document.querySelector('.quill-editor');
+
+  if (!quillEditor) {
+    return [];
+  }
+
+  const imgElements = quillEditor.querySelectorAll(
     'img[src^="data:"]'
   ) as NodeListOf<HTMLImageElement>;
 
-  const uploadPromises: Promise<void>[] = [];
+  // Check if there are no img elements
+  if (imgElements.length === 0) {
+    return [];
+  }
 
+  const uploadPromises: Promise<void>[] = [];
   imgElements.forEach((img: HTMLImageElement) => {
     const base64String = img.src.replace(/^data:image\/\w+;base64,/, '');
     const imageBlob = dataURItoBlob(base64String);
-    // file name will be overwritten by a unique id in the backend
     const imageFile = new File([imageBlob], 'placeholder.png');
 
     const range = quillEditorRef?.getSelection();
     if (range) {
       const uploadPromise = new Promise<void>((resolve, reject): void => {
-        imageUploadService.uploadImage(imageFile).subscribe({
+        imageUploadService.uploadImage(imageFile, s3FolderId).subscribe({
           next: (res: ImageUploadResponseDto) => {
             console.log('Image uploaded successfully:', res.url);
 
@@ -50,7 +60,7 @@ export function prepareQuillImageUpload(
           },
           error: error => {
             console.error('Error uploading image:', error);
-            reject();
+            reject(error);
           },
         });
       });
