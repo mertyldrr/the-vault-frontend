@@ -8,6 +8,7 @@ import { getThumbnail, prepareQuillImageUpload } from '../../utils/utils';
 import { HlmButtonDirective } from '../../spartan-ui/ui-button-helm/src';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-create-post',
@@ -19,7 +20,6 @@ import { Router } from '@angular/router';
 export class CreatePostPage {
   quillEditorRef: Quill | undefined = undefined;
   title: string = '';
-  content: string = '';
   thumbnail: File | null = null;
   thumbnailUrl: string | null = null;
   @ViewChild('fileInput') fileInput!: ElementRef;
@@ -30,12 +30,14 @@ export class CreatePostPage {
     private router: Router
   ) {}
 
-  createPost = (draft: boolean) => {
+  createPost = (draft: boolean, s3FolderId: string) => {
     const blogPost = new FormData();
+    const content = this.quillEditorRef!.getSemanticHTML();
 
     blogPost.append('title', this.title);
-    blogPost.append('content', this.content);
+    blogPost.append('content', content);
     blogPost.append('draft', JSON.stringify(draft));
+    blogPost.append('s3FolderId', s3FolderId);
     if (this.thumbnail) {
       blogPost.append('thumbnail', this.thumbnail);
     }
@@ -51,7 +53,10 @@ export class CreatePostPage {
   };
 
   submitHandler(draft: boolean) {
+    const s3FolderId = uuidv4();
+
     const uploadPromises: Promise<void>[] = prepareQuillImageUpload(
+      s3FolderId,
       this.quillEditorRef,
       this.imageUploadService
     );
@@ -59,7 +64,7 @@ export class CreatePostPage {
     Promise.all(uploadPromises)
       .then(() => {
         console.log('All images uploaded successfully');
-        this.createPost(draft);
+        this.createPost(draft, s3FolderId);
       })
       .catch(error => {
         console.error('Error uploading images:', error);
@@ -67,10 +72,8 @@ export class CreatePostPage {
   }
 
   async handleThumbnailUpload($event: Event) {
-    console.log('handle upload');
     try {
       const result = await getThumbnail($event, 400, 300);
-      console.log(result, 'res');
       if (result) {
         // Do something with the thumbnail and thumbnailUrl
         this.thumbnail = result.thumbnail;
@@ -92,7 +95,7 @@ export class CreatePostPage {
   }
 
   shouldDisableButton() {
-    return this.title.trim() === '' || this.content.trim() === '';
+    return this.title.trim() === '';
   }
 
   getEditorInstance(editorInstance: any) {

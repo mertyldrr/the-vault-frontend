@@ -7,6 +7,7 @@ export interface BlogPost {
   createdAt: string;
   updatedAt: string;
   thumbnailUrl?: string | null;
+  s3FolderId?: string | null;
 }
 
 export interface BlogPostCreateDto {
@@ -14,6 +15,7 @@ export interface BlogPostCreateDto {
   content: string;
   draft: boolean;
   thumbnailUrl?: string | null;
+  s3FolderId?: string | null;
 }
 
 export interface BlogPostUpdateDto {
@@ -21,4 +23,5 @@ export interface BlogPostUpdateDto {
   content?: string;
   draft?: boolean;
   thumbnailUrl?: string | null;
+  s3FolderId?: string | null;
 }

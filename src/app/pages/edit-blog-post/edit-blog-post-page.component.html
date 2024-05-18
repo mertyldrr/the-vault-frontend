@@ -36,10 +36,15 @@
 
     <div class="flex flex-row justify-end gap-x-6">
       <button hlmBtn size="lg" (click)="cancelHandler()" variant="destructive">Cancel</button>
-      <button *ngIf="draft" size="lg" hlmBtn variant="outline" (click)="updateHandler(true)">
+      <button
+        *ngIf="draft"
+        size="lg"
+        hlmBtn
+        variant="outline"
+        (click)="updateHandler(true, blogPost.s3FolderId!)">
         Publish
       </button>
-      <button hlmBtn size="lg" (click)="updateHandler(false)">Update</button>
+      <button hlmBtn size="lg" (click)="updateHandler(false, blogPost.s3FolderId!)">Update</button>
     </div>
   </div>
 </div>

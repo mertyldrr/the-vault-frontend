@@ -10,6 +10,7 @@ import { Token } from '../../types';
 import { Router } from '@angular/router';
 import { LoadingOverlayComponent } from '../../components/loading-overlay/loading-overlay.component';
 import { NgIf } from '@angular/common';
+import { UserStateService } from '../../services/user-state.service';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,8 @@ export class LoginPage {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private userStateService: UserStateService
   ) {}
 
   togglePasswordVisibility() {
@@ -63,6 +65,7 @@ export class LoginPage {
           // save tokens to the local storage
           storeToken(Token.Access, user.accessToken!);
           storeToken(Token.Refresh, user.refreshToken!);
+          this.userStateService.setCurrentUser(user);
         },
         error: err => {
           this.isLoading = false;

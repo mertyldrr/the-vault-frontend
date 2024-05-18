@@ -1,28 +1,32 @@
 <ng-container *ngIf="blogPost$ | async as blogPost">
-  <div class="flex flex-col justify-center w-full py-20 px-32">
-    <div class="w-full flex flex-col pt-10 pb-20">
-      <div>
-        <h1 class="font-notoSerif text-3xl text-center">
-          {{ blogPost.title }}
-        </h1>
+  <div class="flex flex-col min-h-[calc(100vh-8rem)]">
+    <div class="flex-1 justify-center w-full py-20 px-32">
+      <div class="w-full flex flex-col pt-10 pb-20">
+        <div>
+          <h1 class="font-notoSerif text-3xl text-center">
+            {{ blogPost.title }}
+          </h1>
+        </div>
+        <div>
+          <quill-view-html
+            class="font-atkinson text-lg text-center text-gray-500 leading-8"
+            [content]="blogPost.content"
+            theme="snow"></quill-view-html>
+        </div>
       </div>
-      <div>
-        <quill-view-html
-          class="font-atkinson text-lg text-center text-gray-500 leading-8"
-          [content]="blogPost.content"
-          theme="snow"></quill-view-html>
-      </div>
+      <ng-container *ngIf="blogPostService.isUserOwner(blogPost.userId) | async">
+        <div class="flex flex-row justify-center space-x-4">
+          <button hlmBtn (click)="navigateToEdit(blogPost.id.toString())">
+            <hlm-icon size="sm" class="mr-2" name="lucideFilePen"></hlm-icon>
+            Edit
+          </button>
+          <button hlmBtn variant="destructive" (click)="deleteBlogPost(blogPost.id)">
+            <hlm-icon size="sm" class="mr-2" name="lucideTrash2"></hlm-icon>
+            Delete
+          </button>
+        </div>
+      </ng-container>
     </div>
-    <div class="flex flex-row justify-center space-x-4">
-      <button hlmBtn (click)="navigateToEdit(blogPost.id.toString())">
-        <hlm-icon size="sm" class="mr-2" name="lucideFilePen"></hlm-icon>
-        Edit
-      </button>
-      <button hlmBtn variant="destructive">
-        <hlm-icon size="sm" class="mr-2" name="lucideTrash2"></hlm-icon>
-        Delete
-      </button>
-    </div>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
 </ng-container>
