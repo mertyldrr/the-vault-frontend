@@ -11,9 +11,9 @@ export class ImageUploadService {
   private apiUrl = environment.apiUrl + '/image';
   constructor(private http: HttpClient) {}
 
-  uploadImage(image: File): Observable<ImageUploadResponseDto> {
+  uploadImage(image: File, s3FolderId: string): Observable<ImageUploadResponseDto> {
     const formData = new FormData();
     formData.append('file', image);
-    return this.http.post<ImageUploadResponseDto>(`${this.apiUrl}/upload`, formData);
+    return this.http.post<ImageUploadResponseDto>(`${this.apiUrl}/upload/${s3FolderId}`, formData);
   }
 }
