@@ -11,6 +11,7 @@ import {
 import { getStoredToken, removeToken } from '../../utils/local-storage/utils';
 import { Token } from '../../types';
 import { Router } from '@angular/router';
+import { UserStateService } from '../user-state.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,8 @@ export class AuthService {
   private apiUrl = environment.apiUrl + '/auth';
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private userStateService: UserStateService
   ) {}
 
   isAuthenticated(): boolean {
@@ -39,6 +41,7 @@ export class AuthService {
   logout(): void {
     removeToken(Token.Access);
     removeToken(Token.Refresh);
+    this.userStateService.setCurrentUser(null);
     this.router.navigate(['/']);
   }
 
